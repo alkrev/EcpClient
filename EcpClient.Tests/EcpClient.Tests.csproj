@@ -29,8 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Portal\" />
     <Folder Include="Web\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EcpClient\EcpClient.csproj" />
   </ItemGroup>
 
 </Project>
