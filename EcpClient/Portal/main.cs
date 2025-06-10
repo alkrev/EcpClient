@@ -1,11 +1,10 @@
 ﻿using Ecp.Web;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Threading;
 
 namespace Ecp.Portal
 {
-    public class Main: IMain
+    public class Main : IMain
     {
         IClient wc;
         public Main(IClient wc)

@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Threading;
 
 namespace Ecp.Portal
 {
-    public class EMD: IEMD
+    public class EMD : IEMD
     {
         IClient wc;
         public EMD(IClient wc)

@@ -4,6 +4,6 @@ namespace Ecp.Portal
 {
     public class NotLoggedInException : Exception
     {
-        public NotLoggedInException(string message): base(message) { }
+        public NotLoggedInException(string message) : base(message) { }
     }
 }
