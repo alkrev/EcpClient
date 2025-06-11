@@ -53,11 +53,6 @@ namespace Ecp.Web
             {
                 res = JsonConvert.DeserializeObject<T>(responseString);
             }
-            catch (JsonException e)
-            {
-                string err = "JsonDeserialize: " + e.Message ?? "ошибка";
-                throw new DeserializeException(err);
-            }
             catch (Exception e)
             {
                 string err = "JsonDeserialize: " + e.Message ?? "ошибка";
