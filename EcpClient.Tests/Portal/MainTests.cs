@@ -27,12 +27,12 @@ namespace EcpClient.Tests.Portal
             string expectedUrl = $"?c=main&m=index&method=Logon&login={expectedLogin}";
             string expectedReferer = "?c=portal&m=udp";
             var expectedParameters = new Dictionary<string, string>()
-        {
-            { "login", expectedLogin },
-            { "psw", expectedPassword },
-            { "swUserRegion", "" },
-            { "swUserDBType", "" },
-        };
+            {
+                { "login", expectedLogin },
+                { "psw", expectedPassword },
+                { "swUserRegion", "" },
+                { "swUserDBType", "" },
+            };
 
             mockClient
                 .Setup(c => c.PostJson<loginReply>(expectedUrl, It.Is<Dictionary<string, string>>(p =>
