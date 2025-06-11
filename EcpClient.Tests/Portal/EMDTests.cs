@@ -1,11 +1,7 @@
-﻿using Xunit;
+﻿using Ecp.Portal;
+using Ecp.Web;
 using FluentAssertions;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Ecp.Portal;
-using Ecp.Web;
 
 namespace EcpClient.Tests.Portal
 {
