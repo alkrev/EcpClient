@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Portal\emd.cs" />
-    <Compile Include="Portal\exceptions.cs" />
     <Compile Include="Portal\IEMD.cs" />
     <Compile Include="Portal\IMain.cs" />
     <Compile Include="Portal\main.cs" />
