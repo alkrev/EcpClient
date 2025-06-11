@@ -10,7 +10,7 @@ namespace Ecp.Web
 {
     public class Client : IClient
     {
-        string url;
+        Uri uri;
         HttpClient client;
         CookieContainer cookieContainer;
         /// <summary>
@@ -22,18 +22,18 @@ namespace Ecp.Web
             cookieContainer = new CookieContainer();
             var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
             client = new HttpClient(handler);
-            this.url = url;
+            this.uri = new Uri(url);
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
         }
-        public async Task<string> Post(string url, Dictionary<string, string> parameters, string referer)
+        public async Task<string> Post(string query, Dictionary<string, string> parameters, string referer)
         {
             string responseString;
             try
             {
-                string path = Path.Combine(this.url, url);
-                string re = Path.Combine(this.url, referer);
+                Uri path = new Uri(this.uri, query);
+                Uri re = new Uri(this.uri, referer);
                 var requestMessage = new HttpRequestMessage(HttpMethod.Post, path);
-                requestMessage.Headers.Referrer = new Uri(re);
+                requestMessage.Headers.Referrer = re;
                 requestMessage.Content = new FormUrlEncodedContent(parameters);
                 var response = await client.SendAsync(requestMessage);
                 responseString = await response.Content.ReadAsStringAsync();
@@ -68,14 +68,14 @@ namespace Ecp.Web
         /// 
         /// </summary>
         /// <typeparam name="T">Тип возвращаемого объекта для десериализации</typeparam>
-        /// <param name="url">query часть запроса</param>
+        /// <param name="query">query часть запроса</param>
         /// <param name="parameters">параметры</param>
         /// <param name="referer">referer запроса</param>
         /// <returns>Возвращает десериализованный объект. Либо возвращает NetworkException, DeserializeException</returns>
-        public async Task<T> PostJson<T>(string url, Dictionary<string, string> parameters, string referer)
+        public async Task<T> PostJson<T>(string query, Dictionary<string, string> parameters, string referer)
         {
             T res;
-            string responseString = await Post(url, parameters, referer);
+            string responseString = await Post(query, parameters, referer);
             res = JsonDeserialize<T>(responseString);
             return res;
         }
