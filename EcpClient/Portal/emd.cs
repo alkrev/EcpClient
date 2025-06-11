@@ -34,16 +34,7 @@ namespace Ecp.Portal
                 { "isMOSign","true" },
                 { "start",$"{startIndex}" }
             };
-            List<loadEMDSignBundleWindowReply> data;
-            try
-            {
-                data = await wc.PostJson<List<loadEMDSignBundleWindowReply>>(url, parameters, referer);
-            }
-            catch (DeserializeException ex)
-            {
-                throw new NotLoggedInException(ex.Message);
-            }
-            return data;
+            return await wc.PostJson<List<loadEMDSignBundleWindowReply>>(url, parameters, referer);
         }
         /**
          * Выполняем поиск сертификатов пользователя в ECP
@@ -60,16 +51,7 @@ namespace Ecp.Portal
                 { "start","0" },
                 { "limit","25" },
             };
-            List<loadEMDCertificateListReply> data;
-            try
-            {
-                data = await wc.PostJson<List<loadEMDCertificateListReply>>(url, parameters, referer);
-            }
-            catch (DeserializeException ex)
-            {
-                throw new NotLoggedInException(ex.Message);
-            }
-            return data;
+            return await wc.PostJson<List<loadEMDCertificateListReply>>(url, parameters, referer);
         }
         /**
          * Проверка перед подписанием
@@ -86,16 +68,7 @@ namespace Ecp.Portal
                 { "isMOSign","true" },
                 { "isPreview","" },
             };
-            checkBeforeSignReply data;
-            try
-            {
-                data = await wc.PostJson<checkBeforeSignReply>(url, parameters, referer);
-            }
-            catch (DeserializeException ex)
-            {
-                throw new NotLoggedInException(ex.Message);
-            }
-            return data;
+            return await wc.PostJson<checkBeforeSignReply>(url, parameters, referer);
         }
         /**
          * Получаем документ для подписания
@@ -112,16 +85,7 @@ namespace Ecp.Portal
                 { "isPreview","" },
                 { "EMDVersion_VersionNum",EMDVersion_VersionNum.ToString()},
             };
-            getEMDVersionSignDataReply data;
-            try
-            {
-                data = await wc.PostJson<getEMDVersionSignDataReply>(url, parameters, referer);
-            }
-            catch (DeserializeException ex)
-            {
-                throw new NotLoggedInException(ex.Message);
-            }
-            return data;
+            return await wc.PostJson<getEMDVersionSignDataReply>(url, parameters, referer);
         }
         /**
          * Сохраняем подпись
@@ -142,16 +106,7 @@ namespace Ecp.Portal
                 { "LpuSection_id", "" },
                 { "MedService_id", "" },
             };
-            saveEMDSignaturesReply data;
-            try
-            {
-                data = await wc.PostJson<saveEMDSignaturesReply>(url, parameters, referer);
-            }
-            catch (DeserializeException ex)
-            {
-                throw new NotLoggedInException(ex.Message);
-            }
-            return data;
+            return await wc.PostJson<saveEMDSignaturesReply>(url, parameters, referer);
         }
     }
     public class loadEMDSignBundleWindowReply
