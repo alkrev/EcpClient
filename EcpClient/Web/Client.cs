@@ -70,16 +70,18 @@ namespace Ecp.Web
     }
     public class NetworkException : Exception
     {
-        public NetworkException(string message) : base(message)
-        {
-
-        }
+        /// <summary>
+        /// Любая ошибка при выполнении сетевого запроса
+        /// </summary>
+        /// <param name="message"></param>
+        public NetworkException(string message) : base(message) { }
     }
     public class DeserializeException : Exception
     {
-        public DeserializeException(string message) : base(message)
-        {
-
-        }
+        /// <summary>
+        /// Ошибка десериализации. Почти всегда означает, что вход не выполнен. 
+        /// </summary>
+        /// <param name="message"></param>
+        public DeserializeException(string message) : base(message) { }
     }
 }
