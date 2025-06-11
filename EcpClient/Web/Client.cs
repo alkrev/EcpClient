@@ -64,6 +64,14 @@ namespace Ecp.Web
             }
             return res;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T">Тип возвращаемого объекта для десериализации</typeparam>
+        /// <param name="url">query часть запроса</param>
+        /// <param name="parameters">параметры</param>
+        /// <param name="referer">referer запроса</param>
+        /// <returns>Возвращает десериализованный объект. Либо возвращает NetworkException, DeserializeException</returns>
         public async Task<T> PostJson<T>(string url, Dictionary<string, string> parameters, string referer)
         {
             T res;
