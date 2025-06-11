@@ -13,6 +13,10 @@ namespace Ecp.Web
         string url;
         HttpClient client;
         CookieContainer cookieContainer;
+        /// <summary>
+        /// Простой веб-клиент для работы с ЕЦП.МИС
+        /// </summary>
+        /// <param name="url"></param>
         public Client(string url)
         {
             cookieContainer = new CookieContainer();
