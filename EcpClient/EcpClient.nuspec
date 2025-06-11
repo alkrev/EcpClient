@@ -9,6 +9,10 @@
     <license type="expression">MIT</license>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-	<repository type="git" url="https://github.com/alkrev/EcpClient"/>
+    <repository type="git" url="https://github.com/alkrev/EcpClient"/>
+    <readme>readme.md</readme>
   </metadata>
+  <files>
+    <file src="readme.md" target="" />
+  </files>
 </package>
