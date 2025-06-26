@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcpClient", "EcpClient\EcpC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcpClient.Tests", "EcpClient.Tests\EcpClient.Tests.csproj", "{121D9233-C9EE-4FA0-97E2-626C90513306}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcpClient.examples", "EcpClient.examples\EcpClient.examples.csproj", "{701A5E45-1999-4FD1-A10B-1DA65573F46B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{121D9233-C9EE-4FA0-97E2-626C90513306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{121D9233-C9EE-4FA0-97E2-626C90513306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{121D9233-C9EE-4FA0-97E2-626C90513306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{701A5E45-1999-4FD1-A10B-1DA65573F46B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701A5E45-1999-4FD1-A10B-1DA65573F46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701A5E45-1999-4FD1-A10B-1DA65573F46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701A5E45-1999-4FD1-A10B-1DA65573F46B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
