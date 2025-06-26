@@ -10,6 +10,9 @@ namespace EcpClient.examples
 {
     internal class Program
     {
+        /// <summary>
+        /// Программа демонстрирует подключение к порталу ЕЦП
+        /// </summary>
         static async Task Main(string[] args)
         {
             try
@@ -36,7 +39,7 @@ namespace EcpClient.examples
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Вход не выполнен: {ex.Message}");
             }
         }
     }
