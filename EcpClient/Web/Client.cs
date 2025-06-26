@@ -15,8 +15,17 @@ namespace Ecp.Web
         /// <summary>
         /// Простой веб-клиент для работы с ЕЦП.МИС
         /// </summary>
-        /// <param name="url"></param>
-        public Client(string url)
+
+        private void AddDefaulRequestHeaders(HttpRequestHeaders headers, string userAgent)
+        {
+            headers.UserAgent.ParseAdd(userAgent);
+            headers.Accept.ParseAdd("*/*");
+            headers.AcceptEncoding.ParseAdd("gzip, deflate, br, zstd");
+            headers.AcceptLanguage.ParseAdd("ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3");
+            headers.Connection.ParseAdd("keep-alive");
+            headers.Pragma.ParseAdd("no-cache");
+        }
+        public Client(string url, string userAgent)
         {
             cookieContainer = new CookieContainer();
             var handler = new HttpClientHandler() { 
@@ -24,6 +33,7 @@ namespace Ecp.Web
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate 
             };
             client = new HttpClient(handler);
+            AddDefaulRequestHeaders(client.DefaultRequestHeaders, userAgent);
             this.uri = new Uri(url);
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
         }
