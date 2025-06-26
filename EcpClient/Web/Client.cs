@@ -37,6 +37,20 @@ namespace Ecp.Web
             this.uri = new Uri(url);
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
         }
+        private void AddPostRequestHeaders(HttpRequestHeaders headers, Uri re)
+        {
+            headers.Referrer = re;
+            headers.Add("Cache-Control", "no-cache");
+            headers.Add("Origin", re.ToString());
+            headers.Add("DNT", "1");
+            headers.Add("Priority", "u=0");
+            headers.Add("Sec-Fetch-Dest", "empty");
+            headers.Add("Sec-Fetch-Mode", "cors");
+            headers.Add("Sec-Fetch-Site", "same-origin");
+            headers.Add("Sec-GPC", "1");
+            headers.Add("TE", "trailers");
+            headers.Add("X-Requested-With", "XMLHttpRequest");
+        }
         public async Task<string> Post(string query, Dictionary<string, string> parameters, string referer)
         {
             string responseString;
@@ -45,7 +59,7 @@ namespace Ecp.Web
                 Uri path = new Uri(this.uri, query);
                 Uri re = new Uri(this.uri, referer);
                 var requestMessage = new HttpRequestMessage(HttpMethod.Post, path);
-                requestMessage.Headers.Referrer = re;
+                AddPostRequestHeaders(requestMessage.Headers, re);
                 requestMessage.Content = new FormUrlEncodedContent(parameters);
                 var response = await client.SendAsync(requestMessage);
                 responseString = await response.Content.ReadAsStringAsync();
