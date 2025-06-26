@@ -19,7 +19,10 @@ namespace Ecp.Web
         public Client(string url)
         {
             cookieContainer = new CookieContainer();
-            var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
+            var handler = new HttpClientHandler() { 
+                CookieContainer = cookieContainer, 
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate 
+            };
             client = new HttpClient(handler);
             this.uri = new Uri(url);
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
