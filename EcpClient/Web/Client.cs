@@ -49,6 +49,39 @@ namespace Ecp.Web
             }
             return responseString;
         }
+        private void AddGetRequestHeaders(HttpRequestHeaders headers)
+        {
+            headers.Add("DNT", "1");
+            headers.Add("Priority", "u=0, i");
+            headers.Add("Sec-Fetch-Dest", "document");
+            headers.Add("Sec-Fetch-Mode", "navigate");
+            headers.Add("Sec-Fetch-Site", "none");
+            headers.Add("Sec-Fetch-User", "?1");
+            headers.Add("Upgrade-Insecure-Requests", "1");
+        }
+        public async Task<string> Get(string query)
+        {
+            string responseString;
+            try
+            {
+                Uri path = new Uri(this.uri, query);
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, path);
+                AddGetRequestHeaders(requestMessage.Headers);
+                var response = await client.SendAsync(requestMessage);
+                responseString = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException e)
+            {
+                string err = "Get: " + e.InnerException.Message ?? e.Message ?? "ошибка";
+                throw new NetworkException(err);
+            }
+            catch (Exception e)
+            {
+                string err = "Get: " + e.Message ?? "ошибка";
+                throw new NetworkException(err);
+            }
+            return responseString;
+        }
         public T JsonDeserialize<T>(string responseString)
         {
             T res;
